@@ -25,11 +25,23 @@ public class Main {
             .orElse(null); // Tratando o caso em que a lista está vazia com orElse(null)
         System.out.println("Cliente com menor quantidade de compras: " + clienteMenorCompras);
 
+        //outra forma de implementar o código acima	
+        /*int menorCompras = clientes.stream()
+            .mapToInt(Cliente::getCompras)
+            .min()
+            .orElse(0);*/
+
         // Encontrar o cliente com a maior quantidade de compras usando max()
         Cliente clienteMaiorCompras = clientes.stream()
             .max(Comparator.comparingInt(Cliente::getCompras)) // Usando Comparator.comparingInt para comparar a quantidade de compras
             .orElse(null); // Tratando o caso em que a lista está vazia com orElse(null)
         System.out.println("Cliente com maior quantidade de compras: " + clienteMaiorCompras);
+
+        //outra forma de implementar o código acima
+        /*int maiorCompras = clientes.stream()
+            .mapToInt(Cliente::getCompras)
+            .max()
+            .orElse(0);*/
 
         // Calcular a média de compras de todos os clientes usando mapToInt() e average()
         double mediaCompras = clientes.stream()
@@ -37,6 +49,12 @@ public class Main {
             .average() // Calculando a média usando average()
             .orElse(0); // Tratando o caso em que a lista está vazia com orElse(0)
         System.out.println("Media de compras: " + mediaCompras);
+
+        // Calcular a soma de compras de todos os clientes usando mapToInt() e sum()
+        /*int somaCompras = clientes.stream()
+            .mapToInt(Cliente::getCompras) // Convertendo o stream de clientes em um IntStream contendo as quantidades de compras
+            .sum(); // Calculando a soma usando sum()*/
+
     }
 }
 
